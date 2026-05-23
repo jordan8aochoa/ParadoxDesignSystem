@@ -2,6 +2,12 @@
 
 > Plan tier: **Professional**. We use Variables + Collections (Light/Dark modes), Component Properties, and the REST API. Branching and unlimited modes (Organization+) are not required.
 
+## Live file
+
+**Paradox Design System** → https://www.figma.com/design/NcFzCklBQKGZBHrFiixgZw
+
+`fileKey`: `NcFzCklBQKGZBHrFiixgZw` (also recorded in [`Tokens/tokens.json`](../Tokens/tokens.json) under `$figma`).
+
 ## File: "Paradox Design System"
 
 | Page | Phase 1 content |

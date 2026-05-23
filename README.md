@@ -3,6 +3,8 @@
 A premium SwiftUI design system for iOS — calm, native, timeless. Foundation for every future iOS app.
 
 > **Status:** Phase 1 — Foundations. Tokens, theme, playground.
+>
+> 🎨 Figma source of truth: [Paradox Design System](https://www.figma.com/design/NcFzCklBQKGZBHrFiixgZw)
 
 ## Modules
 

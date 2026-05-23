@@ -4,6 +4,10 @@
 Figma Variables ──export──▶ Tokens/tokens.json ──generate-tokens──▶ Sources/ParadoxTokens/Generated/Tokens.generated.swift
 ```
 
+**Live Figma file:** https://www.figma.com/design/NcFzCklBQKGZBHrFiixgZw (fileKey `NcFzCklBQKGZBHrFiixgZw`, recorded in `Tokens/tokens.json` `$figma.fileKey`).
+
+Round-trip verified 2026-05-23 — all 69 variables across 4 collections (`Color/Primitives`=28, `Color/Semantic`=25 × Light+Dark, `Size/Spacing`=9, `Size/Radius`=7) read back from Figma match `tokens.json` byte-for-byte.
+
 `tokens.json` is the **source of truth**. Both Figma and Swift consume it. Both the JSON and the generated Swift file are committed so designer-driven and engineer-driven changes show up as reviewable diffs in PRs.
 
 ## Schema
