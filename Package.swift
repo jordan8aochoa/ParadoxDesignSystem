@@ -42,6 +42,14 @@ let package = Package(
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
             ],
             path: "Tests/ParadoxTokensTests"
+        ),
+        .testTarget(
+            name: "ParadoxUITests",
+            dependencies: [
+                "ParadoxUI",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+            ],
+            path: "Tests/ParadoxUITests"
         )
     ]
 )

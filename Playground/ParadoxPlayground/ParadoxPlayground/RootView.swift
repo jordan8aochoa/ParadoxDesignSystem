@@ -12,6 +12,8 @@ struct RootView: View {
             wrap("Radius",     systemImage: "square.on.circle") { RadiusView() }
             wrap("Motion",     systemImage: "waveform.path") { MotionView() }
             wrap("Elevation",  systemImage: "square.stack.3d.up") { ElevationView() }
+            wrap("Buttons",    systemImage: "rectangle.and.hand.point.up.left") { ButtonsView() }
+            wrap("Rows",       systemImage: "list.bullet.rectangle") { ListItemsView() }
         }
         .tint(theme.color.accent.primary)
     }
