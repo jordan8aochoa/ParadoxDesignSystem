@@ -1,0 +1,31 @@
+name: ParadoxPlayground
+options:
+  bundleIdPrefix: com.paradox
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+packages:
+  ParadoxDesignSystem:
+    path: ../../
+
+targets:
+  ParadoxPlayground:
+    type: application
+    platform: iOS
+    sources:
+      - path: ParadoxPlayground
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.paradox.playground
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.10"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UIRequiresFullScreen: NO
+        ENABLE_PREVIEWS: YES
+    dependencies:
+      - package: ParadoxDesignSystem
+        product: ParadoxUI
