@@ -11,7 +11,7 @@ struct ParadoxPlaygroundApp: App {
                 .environmentObject(appearance)
                 .preferredColorScheme(appearance.colorScheme)
                 .dynamicTypeSize(appearance.dynamicType)
-                .environment(\.accessibilityReduceMotion, appearance.reduceMotion)
+                .environment(\.playgroundReduceMotion, appearance.reduceMotion)
                 .paradoxTheme(ParadoxDefaultTheme())
         }
     }
@@ -34,5 +34,16 @@ final class AppearanceModel: ObservableObject {
         case .light: return .light
         case .dark: return .dark
         }
+    }
+}
+
+private struct PlaygroundReduceMotionKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+extension EnvironmentValues {
+    var playgroundReduceMotion: Bool {
+        get { self[PlaygroundReduceMotionKey.self] }
+        set { self[PlaygroundReduceMotionKey.self] = newValue }
     }
 }

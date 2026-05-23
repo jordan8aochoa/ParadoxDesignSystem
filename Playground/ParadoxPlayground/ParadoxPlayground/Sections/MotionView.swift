@@ -3,7 +3,7 @@ import ParadoxUI
 
 struct MotionView: View {
     @Environment(\.paradoxTheme) private var theme
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.playgroundReduceMotion) private var reduceMotion
     @State private var pulse = false
 
     var body: some View {

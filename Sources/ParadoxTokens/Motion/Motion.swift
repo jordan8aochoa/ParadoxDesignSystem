@@ -56,7 +56,7 @@ public struct MotionScale: Sendable {
 
 public extension View {
     /// Apply an animation that honors `accessibilityReduceMotion`.
-    func paradoxAnimation(_ animation: Animation, value: some Equatable) -> some View {
+    func paradoxAnimation(_ animation: Animation, value: some Hashable) -> some View {
         modifier(ParadoxAnimationModifier(animation: animation, value: AnyHashable(value)))
     }
 }
