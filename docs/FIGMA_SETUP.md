@@ -56,6 +56,25 @@ accent.{primary, primaryPressed, primarySubtle}
 
 `xs=4, sm=6, md=8, lg=12, xl=16, xxl=24, pill=9999`
 
+## Typography in the Figma file
+
+The Figma file uses **Apple Garamond** as its sole typeface (Regular, Italic, Bold, Bold Italic). This is a deliberate split from the iOS app, which uses `Font.system(...)` (SF Pro) for Dynamic Type + OS-managed optical sizing + Apple-native feel.
+
+- **Figma = Apple Garamond** — gives the design system file an editorial, heritage-Apple voice (the same typeface used by Apple's marketing 1984–mid-2000s).
+- **iOS app = SF Pro** — non-negotiable for a modern iOS app. Dynamic Type, accessibility sizes, and Optical Sizing only work with the system font.
+
+### Adding the font
+
+Apple Garamond must be **uploaded directly into Figma** (not just installed locally) for MCP-driven edits to work — the MCP server can't see fonts that only exist on your local machine. To install:
+
+1. In Figma Desktop, **Account Settings → Org/Team fonts** → upload the .ttf/.otf files (Regular, Italic, Bold, Bold Italic).
+2. Verify in the file: text layer → font picker → "Apple Garamond" should appear.
+3. MCP-driven swaps then work via `figma.loadFontAsync({ family: "Apple Garamond", style: "Regular" })`.
+
+### Reverting to a different font
+
+Sweep all `TEXT` nodes whose `fontName.family === "Apple Garamond"` and rewrite to the new family. Same recursion pattern as the original Inter → Apple Garamond swap.
+
 ## Naming convention
 
 - Variables: `category.role.modifier` (e.g., `color.text.primary`).
