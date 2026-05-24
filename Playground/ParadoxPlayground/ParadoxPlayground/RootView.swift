@@ -17,6 +17,8 @@ struct RootView: View {
             wrap("Cards",      systemImage: "rectangle.stack") { CardsView() }
             wrap("Fields",     systemImage: "character.cursor.ibeam") { FieldsView() }
             wrap("Toggles",    systemImage: "switch.2") { TogglesView() }
+            wrap("Badges",     systemImage: "1.circle.fill") { BadgesView() }
+            wrap("Avatars",    systemImage: "person.crop.circle") { AvatarsView() }
         }
         .tint(theme.color.accent.primary)
     }

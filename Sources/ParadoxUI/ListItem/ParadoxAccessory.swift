@@ -78,34 +78,11 @@ private struct ParadoxValueAccessory: View {
 private struct ParadoxAvatarAccessory: View {
     let url: URL?
     let fallback: String?
-    @Environment(\.paradoxTheme) private var theme
 
     var body: some View {
-        ZStack {
-            Circle()
-                .fill(theme.color.surface.secondary)
-            if let url {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image.resizable().scaledToFill()
-                    case .empty, .failure:
-                        initialsView
-                    @unknown default:
-                        initialsView
-                    }
-                }
-            } else {
-                initialsView
-            }
-        }
-        .frame(width: 32, height: 32)
-        .clipShape(Circle())
-    }
-
-    private var initialsView: some View {
-        Text(fallback?.prefix(2).uppercased() ?? "")
-            .paradoxText(theme.typography.label)
-            .foregroundStyle(theme.color.text.secondary)
+        // Defer to the standalone ParadoxAvatar component so the inline-row
+        // avatar inherits the hashed palette + size scale automatically.
+        ParadoxAvatar(url: url, fallback: fallback)
+            .controlSize(.small)
     }
 }
