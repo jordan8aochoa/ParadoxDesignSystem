@@ -21,7 +21,16 @@ let package = Package(
             name: "ParadoxTokens",
             path: "Sources/ParadoxTokens",
             resources: [
-                .process("Fonts")
+                // Enumerate each .ttf explicitly. Pointing .process at the
+                // Fonts/ directory would also sweep in ParadoxFonts.swift as
+                // a resource (copy-not-compile), and the type would vanish
+                // at runtime.
+                .process("Fonts/AppleGaramond-Bold.ttf"),
+                .process("Fonts/AppleGaramond-BoldItalic.ttf"),
+                .process("Fonts/AppleGaramond-Italic.ttf"),
+                .process("Fonts/AppleGaramond-Light.ttf"),
+                .process("Fonts/AppleGaramond-LightItalic.ttf"),
+                .process("Fonts/AppleGaramond-Regular.ttf")
             ]
         ),
         .target(
