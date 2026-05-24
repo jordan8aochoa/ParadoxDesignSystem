@@ -8,7 +8,16 @@ A premium SwiftUI design system for iOS — calm, native, timeless.
 
 ## Typography
 
-`ParadoxTokens` bundles **Apple Garamond** (~280KB across 6 weight/italic variants) and registers it with the OS at first use via ``ParadoxFonts/registrationToken``. `Font.custom(...)` with `relativeTo:` keeps Dynamic Type working. Apps using `ParadoxDefaultTheme` get registration for free; apps with a custom `ParadoxTheme` should touch `_ = ParadoxFonts.registrationToken` at startup.
+The default `TypographyScale` uses **SF Pro** via `Font.system(...)` — Apple-native, free Dynamic Type, OS-managed optical sizing. Use this for ~99% of app chrome.
+
+For an editorial hero headline, `ParadoxTokens` also bundles **Apple Garamond** (~280KB across 6 weight/italic variants) and auto-registers it. Opt in via `Font.custom`:
+
+```swift
+Text("Welcome")
+    .font(.custom(ParadoxFonts.PostScript.regular, size: 34, relativeTo: .largeTitle))
+```
+
+Apps using `ParadoxDefaultTheme` get registration for free. Apps with a custom `ParadoxTheme` should touch `_ = ParadoxFonts.registrationToken` at startup.
 
 ## Getting started
 

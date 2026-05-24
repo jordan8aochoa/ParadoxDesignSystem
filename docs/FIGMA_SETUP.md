@@ -56,24 +56,37 @@ accent.{primary, primaryPressed, primarySubtle}
 
 `xs=4, sm=6, md=8, lg=12, xl=16, xxl=24, pill=9999`
 
-## Typography (Figma + iOS unified)
+## Typography — Figma uses Apple Garamond, iOS uses SF Pro
 
-**Apple Garamond** is the typeface across both the Figma source-of-truth and the iOS app — the same Apple-heritage serif used by Apple's marketing from 1984 to the mid-2000s. Six .ttf files (~280KB total) ship with `ParadoxTokens` and register automatically at runtime.
+**Different surfaces, different jobs.**
 
-### Weights available
+- **Figma file** → Apple Garamond throughout. The design system file is editorial documentation — a brochure for the system, not a shipping product. Garamond gives it Apple's heritage marketing voice (the typeface Apple used 1984–mid-2000s).
+- **iOS app** → SF Pro via `Font.system(...)`. Apple's own iOS apps (Settings, Wallet, Music, Books) all use SF Pro for chrome. SF Pro gives us Apple-native feel, free Dynamic Type, OS-managed optical sizing, and accessibility weights — non-negotiable for a "feels-like-iOS" experience.
 
-| Weight              | PostScript                | Used by `TypographyScale` mapping |
-|---------------------|---------------------------|-----------------------------------|
-| Regular             | `AppleGaramond`           | `.regular`, `.medium`             |
-| Italic              | `AppleGaramond-Italic`    | (available via `ParadoxFonts.PostScript.italic`) |
-| Bold                | `AppleGaramond-Bold`      | `.semibold`, `.bold`, `.heavy`    |
-| Bold Italic         | `AppleGaramond-BoldItalic`| (available via `ParadoxFonts.PostScript.boldItalic`) |
-| Light               | `AppleGaramond-Light`     | `.light`, `.thin`, `.ultraLight`  |
-| Light Italic        | `AppleGaramond-LightItalic`| (available via `ParadoxFonts.PostScript.lightItalic`) |
+### Opt-in Garamond for editorial moments
 
-### Dynamic Type
+Apple Garamond is bundled (~280KB) and auto-registered, so apps that want a serif hero headline can opt in:
 
-`Font.custom(name:size:relativeTo:)` (iOS 14+) is used so accessibility text sizes still scale Garamond proportionally. The `relativeTo:` argument matches each `TextStyle` to its closest system text style (display→largeTitle, headline→headline, body→callout, etc.).
+```swift
+Text("Welcome to Tap Out")
+    .font(.custom(ParadoxFonts.PostScript.regular, size: 34, relativeTo: .largeTitle))
+
+Text("Pro tip")
+    .font(.custom(ParadoxFonts.PostScript.bold, size: 22, relativeTo: .title))
+```
+
+`Font.custom(_:size:relativeTo:)` (iOS 14+) preserves Dynamic Type scaling. Available PostScript names:
+
+| Weight       | PostScript                  |
+|--------------|------------------------------|
+| Regular      | `AppleGaramond`              |
+| Italic       | `AppleGaramond-Italic`       |
+| Bold         | `AppleGaramond-Bold`         |
+| Bold Italic  | `AppleGaramond-BoldItalic`   |
+| Light        | `AppleGaramond-Light`        |
+| Light Italic | `AppleGaramond-LightItalic`  |
+
+All exposed via `ParadoxFonts.PostScript.*` constants.
 
 ### Adding the font to Figma
 
