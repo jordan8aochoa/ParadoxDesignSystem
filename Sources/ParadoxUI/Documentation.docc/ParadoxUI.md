@@ -6,6 +6,10 @@ A premium SwiftUI design system for iOS — calm, native, timeless.
 
 `ParadoxUI` will host components, modifiers, and motion patterns starting in Phase 2. Phase 1 ships only the foundation layer: `ParadoxTokens`, which `ParadoxUI` re-exports.
 
+## Typography
+
+`ParadoxTokens` bundles **Apple Garamond** (~280KB across 6 weight/italic variants) and registers it with the OS at first use via ``ParadoxFonts/registrationToken``. `Font.custom(...)` with `relativeTo:` keeps Dynamic Type working. Apps using `ParadoxDefaultTheme` get registration for free; apps with a custom `ParadoxTheme` should touch `_ = ParadoxFonts.registrationToken` at startup.
+
 ## Getting started
 
 Add the package to your `Package.swift`:

@@ -19,7 +19,10 @@ let package = Package(
     targets: [
         .target(
             name: "ParadoxTokens",
-            path: "Sources/ParadoxTokens"
+            path: "Sources/ParadoxTokens",
+            resources: [
+                .process("Fonts")
+            ]
         ),
         .target(
             name: "ParadoxUI",

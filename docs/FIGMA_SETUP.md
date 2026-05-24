@@ -56,24 +56,37 @@ accent.{primary, primaryPressed, primarySubtle}
 
 `xs=4, sm=6, md=8, lg=12, xl=16, xxl=24, pill=9999`
 
-## Typography in the Figma file
+## Typography (Figma + iOS unified)
 
-The Figma file uses **Apple Garamond** as its sole typeface (Regular, Italic, Bold, Bold Italic). This is a deliberate split from the iOS app, which uses `Font.system(...)` (SF Pro) for Dynamic Type + OS-managed optical sizing + Apple-native feel.
+**Apple Garamond** is the typeface across both the Figma source-of-truth and the iOS app — the same Apple-heritage serif used by Apple's marketing from 1984 to the mid-2000s. Six .ttf files (~280KB total) ship with `ParadoxTokens` and register automatically at runtime.
 
-- **Figma = Apple Garamond** — gives the design system file an editorial, heritage-Apple voice (the same typeface used by Apple's marketing 1984–mid-2000s).
-- **iOS app = SF Pro** — non-negotiable for a modern iOS app. Dynamic Type, accessibility sizes, and Optical Sizing only work with the system font.
+### Weights available
 
-### Adding the font
+| Weight              | PostScript                | Used by `TypographyScale` mapping |
+|---------------------|---------------------------|-----------------------------------|
+| Regular             | `AppleGaramond`           | `.regular`, `.medium`             |
+| Italic              | `AppleGaramond-Italic`    | (available via `ParadoxFonts.PostScript.italic`) |
+| Bold                | `AppleGaramond-Bold`      | `.semibold`, `.bold`, `.heavy`    |
+| Bold Italic         | `AppleGaramond-BoldItalic`| (available via `ParadoxFonts.PostScript.boldItalic`) |
+| Light               | `AppleGaramond-Light`     | `.light`, `.thin`, `.ultraLight`  |
+| Light Italic        | `AppleGaramond-LightItalic`| (available via `ParadoxFonts.PostScript.lightItalic`) |
 
-Apple Garamond must be **uploaded directly into Figma** (not just installed locally) for MCP-driven edits to work — the MCP server can't see fonts that only exist on your local machine. To install:
+### Dynamic Type
 
-1. In Figma Desktop, **Account Settings → Org/Team fonts** → upload the .ttf/.otf files (Regular, Italic, Bold, Bold Italic).
-2. Verify in the file: text layer → font picker → "Apple Garamond" should appear.
+`Font.custom(name:size:relativeTo:)` (iOS 14+) is used so accessibility text sizes still scale Garamond proportionally. The `relativeTo:` argument matches each `TextStyle` to its closest system text style (display→largeTitle, headline→headline, body→callout, etc.).
+
+### Adding the font to Figma
+
+Apple Garamond must be **uploaded directly into Figma** (not just installed locally) for MCP-driven edits to work — the MCP server can't see fonts that only exist on your local machine.
+
+1. In Figma Desktop → **Account Settings → Fonts** → upload all 6 .ttf files.
+2. Verify in the file: text layer → font picker → "Apple Garamond" appears with Regular/Italic/Bold/Bold Italic styles.
 3. MCP-driven swaps then work via `figma.loadFontAsync({ family: "Apple Garamond", style: "Regular" })`.
 
 ### Reverting to a different font
 
-Sweep all `TEXT` nodes whose `fontName.family === "Apple Garamond"` and rewrite to the new family. Same recursion pattern as the original Inter → Apple Garamond swap.
+- **Figma side**: sweep all `TEXT` nodes whose `fontName.family === "Apple Garamond"` and rewrite to the new family.
+- **iOS side**: replace the .ttf files in `Sources/ParadoxTokens/Fonts/`, update PostScript names in `ParadoxFonts.swift`, adjust the weight mapping in `TextStyle.paradoxFontName(for:)`. No other Swift code needs to change.
 
 ## Naming convention
 

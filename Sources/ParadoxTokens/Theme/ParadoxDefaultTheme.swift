@@ -11,6 +11,12 @@ public struct ParadoxDefaultTheme: ParadoxTheme {
     public let elevation: ElevationScale
 
     public init() {
+        // Touch the registration token once so Apple Garamond is loaded with
+        // the OS before any `TextStyle` resolves its `Font.custom(...)` lookup.
+        // Swift's lazy static initialization guarantees this runs exactly once
+        // per process even if many themes are instantiated.
+        _ = ParadoxFonts.registrationToken
+
         self.color = Self.makeColor()
         self.typography = Self.makeTypography()
         self.spacing = SpacingScale()

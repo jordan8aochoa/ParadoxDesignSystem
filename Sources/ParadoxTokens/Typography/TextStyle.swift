@@ -30,6 +30,9 @@ public struct TypographyScale: Sendable {
 
 /// A typography token. Use `font` directly with `.font()`; use `lineHeight` and `tracking`
 /// in custom layout when you need to align to baseline grids.
+///
+/// The underlying `Font` is bundled Apple Garamond (registered automatically by
+/// `ParadoxFonts`). Dynamic Type scaling is preserved via `Font.custom(_:size:relativeTo:)`.
 public struct TextStyle: Sendable {
     public let font: Font
     public let size: CGFloat
@@ -48,8 +51,25 @@ public struct TextStyle: Sendable {
         self.lineHeight = lineHeight
         self.tracking = tracking
         self.weight = weight
-        self.font = .system(size: size, weight: weight, design: .default)
-            .leading(.standard)
+        self.font = .custom(
+            Self.paradoxFontName(for: weight),
+            size: size,
+            relativeTo: relativeTo
+        )
+    }
+
+    /// Maps a `Font.Weight` to one of the three Apple Garamond weights that ship
+    /// in `ParadoxTokens` (Light, Regular, Bold). Italic variants are exposed via
+    /// `ParadoxFonts.PostScript` for callers who need them directly.
+    private static func paradoxFontName(for weight: Font.Weight) -> String {
+        if weight == .ultraLight || weight == .thin || weight == .light {
+            return ParadoxFonts.PostScript.light
+        }
+        if weight == .regular || weight == .medium {
+            return ParadoxFonts.PostScript.regular
+        }
+        // .semibold / .bold / .heavy / .black / anything else
+        return ParadoxFonts.PostScript.bold
     }
 }
 
