@@ -14,6 +14,9 @@ struct RootView: View {
             wrap("Elevation",  systemImage: "square.stack.3d.up") { ElevationView() }
             wrap("Buttons",    systemImage: "rectangle.and.hand.point.up.left") { ButtonsView() }
             wrap("Rows",       systemImage: "list.bullet.rectangle") { ListItemsView() }
+            wrap("Cards",      systemImage: "rectangle.stack") { CardsView() }
+            wrap("Fields",     systemImage: "character.cursor.ibeam") { FieldsView() }
+            wrap("Toggles",    systemImage: "switch.2") { TogglesView() }
         }
         .tint(theme.color.accent.primary)
     }
