@@ -2,7 +2,7 @@
 
 A premium SwiftUI design system for iOS — calm, native, timeless. Foundation for every future iOS app.
 
-> **Status:** Phase 4 complete — Overlays shipped (Modal, BottomSheet, Toast, ContextMenu, FAB) on top of foundations, core primitives, and chrome.
+> **Status:** Phase 5 complete — Motion primitives + Liquid Glass shipped. All core, chrome, overlay, motion, and iOS 26 glass surfaces are in.
 >
 > 🎨 Figma source of truth: [Paradox Design System](https://www.figma.com/design/NcFzCklBQKGZBHrFiixgZw)
 
@@ -49,5 +49,5 @@ cd Playground/ParadoxPlayground && xcodegen generate && open *.xcodeproj
 2. ~~**Core primitives** — Button, Card, TextField, Toggle, Badge, Avatar, ListItem~~ ✅
 3. ~~**Navigation & chrome** — NavigationBar, TabBar, SegmentedControl, SearchBar~~ ✅
 4. ~~**Overlays** — Modal, BottomSheet, Toast, ContextMenu, FAB~~ ✅
-5. **Motion + Liquid Glass** *(next)* — advanced motion, `ParadoxGlass` for iOS 26
-6. Adoption — DocC site, refactor Tap Out as first real consumer
+5. ~~**Motion + Liquid Glass** — Shimmer/Pulse/Stagger/Celebrate + `ParadoxGlass` (iOS 26)~~ ✅
+6. **Adoption** *(next)* — DocC site, refactor Tap Out as first real consumer

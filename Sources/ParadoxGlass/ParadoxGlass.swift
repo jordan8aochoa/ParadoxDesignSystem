@@ -1,10 +1,17 @@
 /// `ParadoxGlass` — iOS 26 Liquid Glass extensions for ParadoxUI.
 ///
-/// This module is a placeholder for Phase 5. All public surface here will be
-/// `@available(iOS 26, *)` gated so apps that link this module can still target iOS 17+
-/// at the call site via `if #available(iOS 26, *) { ... }`.
+/// Every public surface here is `@available(iOS 26, *)` gated. Apps linking
+/// this module can still target iOS 17+ — they just need to wrap call sites:
+///
+/// ```swift
+/// if #available(iOS 26, *) {
+///     SomeView().paradoxGlass()
+/// } else {
+///     SomeView().background(theme.color.background.elevated)
+/// }
+/// ```
 @_exported import ParadoxUI
 
 public enum ParadoxGlass {
-    public static let version = "0.0.0-phase5-placeholder"
+    public static let version = "0.1.0"
 }
