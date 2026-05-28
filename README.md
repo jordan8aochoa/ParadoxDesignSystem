@@ -2,7 +2,7 @@
 
 A premium SwiftUI design system for iOS — calm, native, timeless. Foundation for every future iOS app.
 
-> **Status:** Phase 1 — Foundations. Tokens, theme, playground.
+> **Status:** Phase 3 complete — Navigation & chrome shipped (NavigationBar, TabBar, SegmentedControl, SearchBar) on top of foundations + core primitives.
 >
 > 🎨 Figma source of truth: [Paradox Design System](https://www.figma.com/design/NcFzCklBQKGZBHrFiixgZw)
 
@@ -45,9 +45,9 @@ cd Playground/ParadoxPlayground && xcodegen generate && open *.xcodeproj
 
 ## Roadmap
 
-1. **Foundations** *(current)* — tokens, theme, playground
-2. Core primitives — Button, Card, TextField, Toggle, Badge, Avatar, ListItem
-3. Navigation & chrome — NavigationBar, TabBar, SegmentedControl, SearchBar
-4. Overlays — Modal, BottomSheet, Toast, ContextMenu, FAB
+1. ~~**Foundations** — tokens, theme, playground~~ ✅
+2. ~~**Core primitives** — Button, Card, TextField, Toggle, Badge, Avatar, ListItem~~ ✅
+3. ~~**Navigation & chrome** — NavigationBar, TabBar, SegmentedControl, SearchBar~~ ✅
+4. **Overlays** *(next)* — Modal, BottomSheet, Toast, ContextMenu, FAB
 5. Motion + Liquid Glass (`ParadoxGlass`)
 6. Adoption — DocC site, refactor Tap Out as first real consumer
